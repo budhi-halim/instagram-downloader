@@ -1,8 +1,12 @@
 name: Update Database
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: '* * * * *'
+  workflow_dispatch: 
 
 jobs:
   process-data:
