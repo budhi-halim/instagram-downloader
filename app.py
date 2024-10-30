@@ -61,6 +61,7 @@ def download_profiles(username, tries=10):
     while counter < tries:
         try:
             loader = instaloader.Instaloader()
+            loader.login('silverwolf12345678', 'ZAY7pjnWhq')
             loader.download_profile(username)
         except:
             continue

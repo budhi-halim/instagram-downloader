@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: "0 3 * * *"  # Runs daily at 03:00 Jakarta time
     - cron: "0 3 * * 1,4"  # Runs on Monday and Thursday at 03:00 Jakarta time
-    - cron: "*/2 * * * *"  # Debug
+    - cron: "* * * * *"  # Debug
 
 jobs:
   download_files_daily:
@@ -49,7 +49,7 @@ jobs:
 
   download_files_debug:
     runs-on: ubuntu-latest
-    if: github.event.schedule == '*/2 * * * *'
+    if: github.event.schedule == '* * * * *'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
