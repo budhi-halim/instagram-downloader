@@ -1,0 +1,31 @@
+# name: Run Downloader Script
+
+# on:
+#   schedule:
+#     - cron: "0 3 * * *"  # Runs daily at 03:00 Jakarta time
+#     - cron: "0 3 * * 1"  # Runs on weekly on Monday at 03:00 Jakarta time
+# jobs:
+#   download_files:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+
+#       - name: Set up Python
+#         uses: actions/setup-python@v3
+#         with:
+#           python-version: "3.13.0"
+
+#       - name: Install dependencies
+#         run: |
+#           python -m pip install --upgrade pip
+#           pip install -r requirements.txt
+
+#       - name: Run downloader script for daily task
+#         if: github.event.schedule == "daily"
+#         run: python downloader.py daily.txt
+
+#       - name: Run downloader script for weekly task
+#         if: github.event.schedule == "cron: 0 3 * * 1"
+#         run: python downloader.py weekly.txt
