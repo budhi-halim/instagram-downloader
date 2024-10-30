@@ -5,11 +5,11 @@ on:
     branches:
       - main
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/15 * * * *'
   workflow_dispatch: 
 
 jobs:
-  process-data:
+  update-database:
     runs-on: ubuntu-latest
 
     steps:
