@@ -65,4 +65,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run downloader script for debug task
-        run: python app.py debug.txt
+        run: python app.py
