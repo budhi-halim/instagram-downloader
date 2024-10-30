@@ -2,9 +2,10 @@ name: Run Downloader Script
 
 on:
   schedule:
-    - cron: "0 3 * * *"  # Runs daily at 03:00 Jakarta time
-    - cron: "0 3 * * 1"  # Runs weekly on Monday at 03:00 Jakarta time
-    - cron: "/2 * * * *" # Debug
+    - cron: "0 3 * * *"    # Runs daily at 03:00 Jakarta time
+    - cron: "0 3 * * 1"    # Runs weekly on Monday at 03:00 Jakarta time
+    - cron: "*/2 * * * *"   # Debug
+
 jobs:
   download_files:
     runs-on: ubuntu-latest
@@ -24,13 +25,13 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run downloader script for daily task
-        if: github.event.schedule == "daily"
+        if: github.event_name == 'schedule' && github.event.schedule == '0 3 * * *'  # Check for the daily schedule
         run: python app.py daily.txt
 
       - name: Run downloader script for weekly task
-        if: github.event.schedule == "cron: 0 3 * * 1"
+        if: github.event_name == 'schedule' && github.event.schedule == '0 3 * * 1'  # Check for the weekly schedule
         run: python app.py weekly.txt
 
       - name: Run downloader script for debug
-        if: github.event.schedule == "cron: 0 3 * * 1"
+        if: github.event_name == 'schedule' && github.event.schedule == '*/2 * * * *'  # Check for the debug schedule
         run: python app.py debug.txt
