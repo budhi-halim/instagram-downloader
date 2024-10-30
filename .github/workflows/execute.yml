@@ -37,18 +37,14 @@ jobs:
 
       # Step 5: Run each data processing script
       - name: Run script 1
-        run: python app.py
+        run: python hsr.py
 
       # Step 6: Commit and push changes to main branch
       - name: Commit and push changes
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          git checkout main
-
-          git add downloads/script1/*  # Files from script1.py
-          git add downloads/script2/*  # Files from script2.py
-          git add downloads/script3/*  # Files from script3.py
+          git add downloads/hsr/*
 
           git commit -m "Daily database update"
 
